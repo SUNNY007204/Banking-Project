@@ -41,11 +41,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return provider;		
 	}
 	
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authProvider());
 	}
-
-	
 	
 }

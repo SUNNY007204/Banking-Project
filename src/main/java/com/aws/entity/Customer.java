@@ -13,9 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Customer")
 public class Customer {
@@ -30,7 +34,7 @@ public class Customer {
 
 	@Column(name = "USERNAME")
 	String username;
-	
+
 	@Column(name = "ADDRESS")
 	String address;
 
@@ -42,21 +46,13 @@ public class Customer {
 
 	@Column(name = "PAN_NO")
 	String panNo;
-	
-	
-	@OneToMany(targetEntity = Account.class,cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name ="CUSTOMER_FK",referencedColumnName = "CUSTOMER_ID")
+
+	@OneToMany(targetEntity = Account.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
+	@JoinColumn(name = "CUSTOMER_FK", referencedColumnName = "CUSTOMER_ID")
 	List<Account> accounts;
-	
-	
-	  @OneToMany(targetEntity = Transaction.class,cascade = CascadeType.ALL)
-	  
-	  @JoinColumn(name ="CUSTOMER_FK",referencedColumnName = "CUSTOMER_ID")
-	  List<Transaction> transactions;
-	 
-	
-	public Customer() {
-		
-	}
-	
+
+	@OneToMany(targetEntity = Transaction.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "CUSTOMER_FK", referencedColumnName = "CUSTOMER_ID")
+	List<Transaction> transactions;
+
 }

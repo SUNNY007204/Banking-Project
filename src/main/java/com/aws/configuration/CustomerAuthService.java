@@ -16,7 +16,7 @@ public class CustomerAuthService implements UserDetailsService {
 	
 	@Autowired
 	CustomerRepository customerRepository;
-	
+	 
 	@Autowired
 	AccountRepository accountRepository;
 
@@ -28,6 +28,7 @@ public class CustomerAuthService implements UserDetailsService {
 		if(customerInDatabase == null) {
 			throw new UsernameNotFoundException("Username not found");
 		}
+		
 		return new AppCustomer(customerInDatabase);
 	}
 

@@ -33,15 +33,16 @@ public class TransactionoWebService {
 		
 		float balance = sender.getAccounts().get(0).getBalance();
 		float beneficiaryBalance = reciever.getAccounts().get(0).getBalance();
-		
-		if(balance<amount) {
+
+		if (balance < amount) {
 			throw new InsufficientBalanceException("Insufficient Account Balnace");
-		}
-		else {
-			//Generate Transaction reciepts here
+		} else {
 			sender.getAccounts().get(0).setBalance(balance-amount);
 			reciever.getAccounts().get(0).setBalance(beneficiaryBalance+amount);		
 		}
+		
+		// Generate Transaction reciepts here
+
 		
 		Transaction senderReciept = new Transaction();
 		senderReciept.setAmount(amount);
@@ -60,11 +61,12 @@ public class TransactionoWebService {
 		recieverReciept.setType("CREDIT");
 		recieverReciept = saveTransaction(recieverReciept);
 
+
 		
-		  List<Transaction> senderTransactions = sender.getTransactions();
-		  senderTransactions.add(senderReciept);
-		  sender.setTransactions(senderTransactions);
-		  customerService.saveCustomer(sender);
+		  List<Transaction> senderTransactions = sender.getTransactions();  //get
+		  senderTransactions.add(senderReciept);							//update
+		  sender.setTransactions(senderTransactions);						//set
+		  customerService.saveCustomer(sender);								//SAVE IN REPO
 		  
 		  List<Transaction> recieverTransactions = reciever.getTransactions();
 		  recieverTransactions.add(recieverReciept);

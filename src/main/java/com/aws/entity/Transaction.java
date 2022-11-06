@@ -38,7 +38,7 @@ public class Transaction {
 	LocalDate date;
 	
 	@Column(name = "TRANSACTION_TYPE")
-	String type;  //SENT, RECIEVED, WITHDRAWED
+	String type;  //DEBIT, CREDIT, WITHDRAW
 
 
 }

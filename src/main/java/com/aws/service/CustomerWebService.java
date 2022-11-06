@@ -32,7 +32,6 @@ public class CustomerWebService {
 		return customerRepo.save(customer);
 	}
 	
-	
 	public List<Customer> getAllCustomers(){
 		return customerRepo.findAll();
 	}
@@ -46,13 +45,13 @@ public class CustomerWebService {
 	
 	public Customer registerCustomer(RegisterCustomerDTO customerDTO) {
 		
-		Account account = new Account();
-		Customer customer = new Customer();
+		Account account = new Account();  //Initialize empty account object to store account information
+		Customer customer = new Customer(); //Initialize empty customer object to store customer information
 		
 		account.setHolderName(customerDTO.getName());
-		account.setBalance(0);  //Inintal Balance of Customer
+		account.setBalance(500);  //Inintal Balance of Customer
 		account.setPassword( new BCryptPasswordEncoder().encode(customerDTO.getPassword()));
-		account = accountRepo.save(account);
+		account = accountRepo.save(account);  //Get account object returned by save method with Generated PK (Primary Key i.e. Account No)
 		
 		customer.setName(customerDTO.getName());
 		customer.setUsername(customerDTO.getUsername());

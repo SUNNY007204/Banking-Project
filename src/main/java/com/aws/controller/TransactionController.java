@@ -60,8 +60,7 @@ public class TransactionController {
 	}
 
 	@PostMapping("/transfer/{id}")
-	public String transferMoney(@LoggedInCustomer AppCustomer loggedInCustomer, @PathVariable("id") int id,
-			@RequestParam("transferAmount") float amount, Model model, RedirectAttributes redirectAttribute) {
+	public String transferMoney(@LoggedInCustomer AppCustomer loggedInCustomer, @PathVariable("id") int id, @RequestParam("transferAmount") float amount, Model model, RedirectAttributes redirectAttribute) {
 		String status = "";
 		try {
 			transactionService.transferMoney(id, loggedInCustomer, amount);
@@ -79,7 +78,7 @@ public class TransactionController {
 
 		Customer currentCustoemr = customerService.findByUsername(loggedInCustomer.getUsername());
 		List<Transaction> myTransactions = currentCustoemr.getTransactions();
-		
+
 		model.addAttribute("transactions", myTransactions);
 		return "history";
 	}

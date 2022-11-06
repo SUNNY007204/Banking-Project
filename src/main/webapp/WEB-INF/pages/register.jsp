@@ -16,9 +16,7 @@
 				<div> Mobile No. : <form:input path="phNo"/> </div>
 				<div> Address : <form:input path="address"/> </div>
 				<div> PAN No. : <form:input path="panNo"/> </div>
-				<div> AADHAR No. : <form:input path="aadharNo"/> </div>
-				
-						
+				<div> AADHAR No. : <form:input path="aadharNo"/> </div>		
 		<form:button>Submit</form:button>
 		<a href="/login">Login</a> again
 	

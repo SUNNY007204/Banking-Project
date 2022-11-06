@@ -44,7 +44,6 @@ public class CustomerWebController {
 		return "redirect:index";
 	}
 
-	
 	@GetMapping("/index")
 	public String index(Model model, @LoggedInCustomer AppCustomer customer) {
 		model.addAttribute("username", customer.getUsername());

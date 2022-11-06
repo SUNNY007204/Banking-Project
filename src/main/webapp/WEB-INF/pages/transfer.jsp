@@ -14,6 +14,7 @@
 		<input type="text" name="accountNo"></input>
 		<button>Search</button>
 	</form>
+	
 	${accountNoNotFound}
 	<table>
 		<tr>
